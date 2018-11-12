@@ -1,1 +1,2 @@
-# Trash-Sorter-IEEE-QP-
+# Trash Sorter
+As Global Warming gets worse, it's only becoming more clear that we need to switch over to more sustainable lifestyles, and that includes properly sorting our waste into trash, compost, and recycling. At UCSD, even though we have separate trash and recycling bins, because people often times do not separate their waste properly, the school ends up throwing everything into the landfill. To tackle this problem, we have designed a machine that looks at an item and, using image recognition, determines whether the item is trash, recyclable, or compostable, and then sorts it accordingly.
