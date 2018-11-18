@@ -30,10 +30,12 @@ Here's an example, which assumes you have a folder containing class-named
 subfolders, each full of images for each label. The folder images
 should have a structure like this:
 
-~/images/apple/apple1.jpg
-~/images/apple/apple2.jpg
+~/images/compost/photo1.jpg
+~/images/compost/photo2.jpg
 ...
-~/images/water-bottle/1.jpg
+~/images/recycling/anotherphoto77.jpg
+...
+~/images/trash/somepicture.jpg
 
 The subfolder names are important, since they define what label is applied to
 each image, but the filenames themselves don't matter. Once your images are
