@@ -50,4 +50,6 @@ def setStep(w1, w2, w3, w4):
 def rotate( int rotations )
     delay = .25
     steps = 128 #128 = 90 degree rotation
-    forward()
+    print("Preparing to move ", rotations*steps, " steps...")
+    forward(delay, steps*rotations)
+    print("Moved " rotations*steps, " steps")
