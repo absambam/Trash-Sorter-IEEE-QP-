@@ -10,5 +10,7 @@ def take_picture():
     sleep(3)
     camera.capture(output)
     camera.stop_preview()
+    
+    return output
 
 take_picture()
