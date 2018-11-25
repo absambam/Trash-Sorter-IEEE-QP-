@@ -44,7 +44,10 @@ def setStep(w1, w2, w3, w4):
     GPIO.output(coil_B_1_pin, w3)
     GPIO.output(coil_B_2_pin, w4)
 
-while True:
-    delay = 1
+# rotate 1, 2, 3, or 4 * 90 degrees
+# rotations is a value between 1 to 4 corresponding to the number of quarters
+# to rotate.
+def rotate( int rotations )
+    delay = .25
     steps = 128 #128 = 90 degree rotation
-    
+    forward()
