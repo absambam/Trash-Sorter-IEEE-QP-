@@ -21,6 +21,8 @@ import argparse
 import sys
 import time
 
+from camera import take_picture
+
 import numpy as np
 import tensorflow as tf
 
@@ -67,10 +69,10 @@ def load_labels(label_file):
     label.append(l.rstrip())
   return label
 
-if __name__ == "__main__":
-  file_name = "tf_files/images/compost/banana1.jpg"
-  model_file = "tf_files/retrained_graph.pb"
-  label_file = "tf_files/retrained_labels.txt"
+def process_picture():
+  file_name = take_picture()
+  model_file = "../tf_files/retrained_graph.pb"
+  label_file = "../tf_files/retrained_labels.txt"
   input_height = 224
   input_width = 224
   input_mean = 128
@@ -78,6 +80,7 @@ if __name__ == "__main__":
   input_layer = "input"
   output_layer = "final_result"
 
+  '''
   parser = argparse.ArgumentParser()
   parser.add_argument("--image", help="image to be processed")
   parser.add_argument("--graph", help="graph/model to be executed")
@@ -108,6 +111,7 @@ if __name__ == "__main__":
     input_layer = args.input_layer
   if args.output_layer:
     output_layer = args.output_layer
+  '''
 
   graph = load_graph(model_file)
   t = read_tensor_from_image_file(file_name,
