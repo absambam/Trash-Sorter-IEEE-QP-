@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
+import servo
 import time
 
-GPIO.setmode(GPIO.BOARD)
 
 # constants
 num_bins = 3
@@ -10,10 +10,8 @@ total_steps = 512
 
 delay = 0.001
 
-control_pins = [7,11,13,15]
-for pin in control_pins:
-  GPIO.setup(pin, GPIO.OUT)
-  GPIO.output(pin, 0)
+#control_pins = [7,11,13,15]
+control_pins = [4,17,27,22]
 
 forward_halfstep_seq = [
   [1,0,0,0],
@@ -38,6 +36,13 @@ backward_halfstep_seq = [
   [1,0,0,0],
 ]
 
+def init():
+  print('initializing stepper...')
+  GPIO.setmode(GPIO.BCM)
+  for pin in control_pins:
+    GPIO.setup(pin, GPIO.OUT)
+    GPIO.output(pin, 0)
+
 def forward(delay, steps):
   for i in range(steps):
     for fwdhalfstep in range(8):
@@ -53,6 +58,7 @@ def backward(delay, steps):
       time.sleep(delay)
 
 def rotate( bin_name ):
+  init()
   destination = 0
   if bin_name == "recycling":
     destination = 1
@@ -60,15 +66,13 @@ def rotate( bin_name ):
     destination = 2
   print("Preparing to move ", destination*steps, " steps to bin ", destination )
   forward(delay, steps*destination)
+  servo.tilt()
   time.sleep(5)
   #return to position 0
   print("Returning to position 0")
   forward(delay, steps*(num_bins-destination))
-  #backward(delay, 1)
-  #current_bin -= num_bins
-  #position += rotations*steps
-  #if position > total_steps: #prevent going over 512 degrees
-  #  position -= total_steps
+  GPIO.cleanup()
 
-rotate("recycling")
-GPIO.cleanup()
+if __name__ == '__main__':
+  init()
+  rotate()
