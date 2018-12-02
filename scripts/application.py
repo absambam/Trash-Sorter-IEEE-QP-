@@ -26,19 +26,6 @@ forward_halfstep_seq = [
   [1,0,0,1]
 ]
 
-backward_halfstep_seq = [
-  [1,0,0,0],
-  [1,0,0,1],
-  [0,0,0,1],
-  [0,0,1,1],
-  [0,0,1,0],
-  [0,1,1,0],
-  [0,1,0,0],
-  [1,1,0,0],
-  [1,0,0,0],
-]
-
-
 def init_button():
   GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
@@ -58,14 +45,11 @@ def tilt():
   p.start(2.5) # Initialization
   for dc in range(0, 18, 1):
     p.ChangeDutyCycle(float(float(2.5)+float(dc/5.0)))
-    # print(float(float(2.5)+float(dc/5.0)))
     time.sleep(0.05)
   p.ChangeDutyCycle(2.5)
   time.sleep(0.5)
 
   p.stop()
- # GPIO.cleanup()
-
 
 def forward(delay, steps):
   for i in range(steps):
@@ -92,13 +76,12 @@ def rotate( bin_name ):
   if destination != 0:
     init_stepper()
     forward(delay, steps*(num_bins-destination))
-    #GPIO.cleanup()
 
 init_button()
 while True:
   input_state = GPIO.input(18)
   if input_state == False:
-    print('boop')
+    print('boop UwU')
     label = process_picture()
     print(label)
     rotate(label)
