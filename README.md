@@ -10,15 +10,16 @@ To use this code, you will need:
 
 Before we start with the programming, we'd highly recommend creating a virtual environment for the project.
 You can do so with the command
-`virtualenv --system-site-packages -p python3 ./venv` where 'venv' is the name you want to give to your project directory.
+```virtualenv --system-site-packages -p python3 ./venv```, where 'venv' is the name you want to give to your project directory.
 Then, to activate the virtual environment, use the command
-`source ./venv/bin/activate`
+```source ./venv/bin/activate```
 
 Now that you've created and activated a virtual environment, let's start setting up our code.
 
 First, enter your project directory and install TensorFlow using the command
-`pip install --upgrade tensorflow`
-
+```
+pip install --upgrade tensorflow
+```
 You can either use our re-trained model, or you can follow [this tutorial on retraining TensorFlow] (https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/) and make your own categories.
 
 If you would rather not retrain the model yourself, then simply copy all of the code in this repository. 
@@ -27,5 +28,7 @@ Otherwise, only copy the files in scripts, and make a folder in your main projec
 Now that we have TensorFlow set up, connect the stepper motor, servo, and button switch to your breadboard and Pi. Take note of which GPIO pins you connect everything to, because you may have to change the pin numbers in the source code depending on how you conenct everything.
 
 Now go into the 'scripts' folder, and run the command
-`python application.py`
+```
+python application.py
+```
 And you should be all set!
