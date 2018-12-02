@@ -8,8 +8,10 @@ steps = 171 #170.666
 total_steps = 512
 
 delay = 0.001
-
-#control_pins = [7,11,13,15]
+p = 0
+servoPIN = 12
+control_pins = [4,17,27,22] #for GPIO.BCM
+#control_pins = [7,11,13,15] for GPIO.BOARD
 
 GPIO.setmode(GPIO.BCM)
 
@@ -40,16 +42,11 @@ backward_halfstep_seq = [
 def init_button():
   GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-
-control_pins = [4,17,27,22]
 def init_stepper():
   for pin in control_pins:
     GPIO.setup(pin, GPIO.OUT)
     GPIO.output(pin, 0)
 
-
-p = 0
-servoPIN = 12
 def init_servo():
   GPIO.setup(servoPIN, GPIO.OUT)
 
