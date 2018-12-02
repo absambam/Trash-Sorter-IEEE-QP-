@@ -12,5 +12,3 @@ def take_picture():
     camera.stop_preview()
     
     return output
-
-take_picture()
